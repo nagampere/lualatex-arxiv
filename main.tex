@@ -1,0 +1,117 @@
+\documentclass{article}
+
+\usepackage{arxiv}
+
+% \usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{newtxtext}      % enhanced Times font with small caps italics
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{cleveref}       % smart cross-referencing
+\usepackage{lipsum}         % Can be removed after putting your text content
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{doi}
+
+\title{A template for the \emph{arxiv} style}
+
+% Here you can change the date presented in the paper title
+%\date{September 9, 1985}
+% Or remove it
+%\date{}
+
+\newif\ifuniqueAffiliation
+% Comment to use multiple affiliations variant of author block 
+\uniqueAffiliationtrue
+
+\ifuniqueAffiliation % Standard variant of author block
+\author{ 
+  \href{https://orcid.org/0009-0006-0826-5996}{\includegraphics[scale=0.06]{orcid.pdf}\hspace{1mm}Yohei Naga} \\
+  % \thanks{Use footnote for providing further
+	% 	information about author (webpage, alternative
+	% 	address)---\emph{not} for acknowledging funding agencies.} \\
+	Graduate School of Engineering,\\
+  Kobe University,\\
+	Rokkodai-cho 1, Nada-ku, Kobe, Hyogo, 657-8501, Japan\\
+	\texttt{232t122t@stu.kobe-u.ac.jp} \\
+	%% examples of more authors
+	% \And
+	% \href{https://orcid.org/0009-0006-0826-5996}{\includegraphics[scale=0.06]{orcid.pdf}\hspace{1mm}Yohei Naga}
+	% Graduate School of Engineering,\\
+  % Kobe University,\\
+	% Rokkodai-cho 1, Nada-ku, Kobe, Hyogo, 657-8501, Japan\\
+	% \texttt{232t122t@stu.kobe-u.ac.jp} \\
+	%% \AND
+	%% Coauthor \\
+	%% Affiliation \\
+	%% Address \\
+	%% \texttt{email} \\
+}
+\else
+% Multiple affiliations variant of author block
+\usepackage{authblk}
+\renewcommand\Authfont{\bfseries}
+\setlength{\affilsep}{0em}
+% box is needed for correct spacing with authblk
+\newbox{\orcid}\sbox{\orcid}{\includegraphics[scale=0.06]{orcid.pdf}} 
+\author[1]{%
+	\href{https://orcid.org/0000-0000-0000-0000}{\usebox{\orcid}\hspace{1mm}David S.~Hippocampus\thanks{\texttt{hippo@cs.cranberry-lemon.edu}}}%
+}
+\author[1,2]{%
+	\href{https://orcid.org/0000-0000-0000-0000}{\usebox{\orcid}\hspace{1mm}Elias D.~Striatum\thanks{\texttt{stariate@ee.mount-sheikh.edu}}}%
+}
+\affil[1]{Department of Computer Science, Cranberry-Lemon University, Pittsburgh, PA 15213}
+\affil[2]{Department of Electrical Engineering, Mount-Sheikh University, Santa Narimana, Levand}
+\fi
+
+% Uncomment to override  the `A preprint' in the header
+%\renewcommand{\headeright}{Technical Report}
+%\renewcommand{\undertitle}{Technical Report}
+\renewcommand{\shorttitle}{\textit{arXiv} Template}
+
+% Set the language for \lipsum
+\SetLipsumLanguage{english} 
+
+%%% Add PDF metadata to help others organize their library
+%%% Once the PDF is generated, you can check the metadata with
+%%% $ pdfinfo template.pdf
+\hypersetup{
+pdftitle={A template for the arxiv style}, % Set the title
+pdfsubject={q-bio.NC, q-bio.QM}, % Set the subject of the document
+pdfauthor={Yohei Naga}, % Set the author
+pdfkeywords={First keyword, Second keyword, More}, % Set the keywords
+}
+
+
+\begin{document}
+\maketitle
+
+% Abstract Section
+\begin{abstract}
+\input{chapter/0_abstract.tex}
+\end{abstract}
+
+% keywords can be removed
+\keywords{First keyword \and Second keyword \and More}
+
+% Introduction Section
+\input{chapter/1_introduction.tex}
+
+% Methodology Section
+\input{chapter/2_methodology.tex}
+
+% Results Section
+\input{chapter/3_results.tex}
+
+
+% References Section
+\bibliographystyle{unsrtnat}
+\bibliography{references} 
+
+
+
+\end{document}
